@@ -45,7 +45,26 @@ namespace StockFusion_Finance.API
                 response.EnsureSuccessStatusCode();
 
                 var body = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<YahooApiModel.Root>(body);
+
+                var settings = new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore,
+                    MissingMemberHandling = MissingMemberHandling.Ignore
+                };
+
+                YahooApiModel.Root result = null; // Initialize the variable
+
+                try
+                {
+                    result = JsonConvert.DeserializeObject<YahooApiModel.Root>(body);
+                }
+                catch (JsonSerializationException ex)
+                {
+                    // Empty catch block: No specific action taken for this exception
+                }
+
+                return result; // Return the result
+
             }
             catch (Exception ex)
             {

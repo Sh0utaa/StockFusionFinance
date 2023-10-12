@@ -97,11 +97,24 @@ namespace AuthSystem.Migrations
 
             modelBuilder.Entity("AuthSystem.Models.TransactionsModel", b =>
                 {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("TransactionsId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("TransactionsId"), 1L, 1);
+
+                    b.Property<string>("Action")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Cost")
+                        .HasColumnType("float");
 
                     b.Property<double>("CurrentPrice")
                         .HasColumnType("float");
+
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -113,10 +126,9 @@ namespace AuthSystem.Migrations
                     b.Property<DateTime>("Time")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TransactionsId")
-                        .HasColumnType("int");
+                    b.HasKey("TransactionsId");
 
-                    b.HasKey("Id");
+                    b.HasIndex("Id");
 
                     b.ToTable("Transactions", (string)null);
                 });
@@ -262,9 +274,7 @@ namespace AuthSystem.Migrations
                 {
                     b.HasOne("AuthSystem.Areas.Identity.Data.ApplicationUser", "ApplicationUser")
                         .WithMany()
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("Id");
 
                     b.Navigation("ApplicationUser");
                 });

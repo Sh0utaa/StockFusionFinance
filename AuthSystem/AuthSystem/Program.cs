@@ -15,7 +15,6 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<AuthSystemDBContext>();
 builder.Services.AddRazorPages();
 builder.Services.AddScoped<IYahooApi, YahooApi>();
 

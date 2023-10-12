@@ -3,29 +3,8 @@
     ViewData["Title"] = "History";
 }
 
-
 <div class="row">
     <div class="col">
-        @* Purchase history *@
-        <form asp-controller="Home" asp-action="History" method="get">
-            <label>Stock:</label>
-            <input asp-for="@Model.Transactions.Symbol" name="symbol" style="width: 25%" />
-
-            <!-- Input for the number of shares -->
-            <input asp-for="@Model.Transactions.Quantity" name="quantity" type="number" placeholder="Number of shares" min="0" style="width: 25%" />
-
-            <!-- Dropdown menu for "Buy" and "Sell" -->
-            <select asp-for="@Model.Transactions.Action" name="action">
-                <option value="Buy">Buy</option>
-                <option value="Sell">Sell</option>
-            </select>
-
-            <!-- Button to submit the form -->
-            <button type="submit">Submit</button>
-        </form>
-
-
-
         <div class="scrollable-table mt-3">
             <table class="table table-striped">
                 <thead>
@@ -59,3 +38,4 @@
         </div>
     </div>
 </div>
+

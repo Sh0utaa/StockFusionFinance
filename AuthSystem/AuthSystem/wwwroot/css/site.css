@@ -54,8 +54,7 @@ body {
 
 /* Custom CSS for scrollable table */
 .scrollable-table {
-    max-height: 70vh; /* Set max height to 70% of the viewport height */
+    max-height: 75vh; /* Set max height to 70% of the viewport height */
     width: 100%; /* Take up the full available width */
-    overflow-y: auto; /* Enable vertical scrolling */
-    overflow-x: hidden; /* Disable horizontal scrolling */
+    overflow: auto; /* Enable scrolling */
 }

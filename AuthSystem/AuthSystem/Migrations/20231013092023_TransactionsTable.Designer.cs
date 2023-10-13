@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuthSystem.Migrations
 {
     [DbContext(typeof(AuthSystemDBContext))]
-    [Migration("20231012072816_Table")]
-    partial class Table
+    [Migration("20231013092023_TransactionsTable")]
+    partial class TransactionsTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

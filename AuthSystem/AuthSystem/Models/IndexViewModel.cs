@@ -6,6 +6,7 @@ namespace AuthSystem.Models
     {
         public TransactionsModel Transactions { get; set; } = new TransactionsModel();
         public List<TransactionsModel>? TransactionsList { get; set; }
+        public PortfolioModel Portfolio { get; set; }
         public YahooApiModel.Root? StockData { get; set; }
     }
 }

@@ -18,15 +18,15 @@
             <!-- Input for the number of shares -->
             <input asp-for="@Model.Transactions.Quantity" type="number" placeholder="Number of shares" min="0" style="width: 25%" />
 
-            <!-- Radio buttons for "Buy" and "Sell" -->
             <div class="form-check">
+                <!-- Radio buttons for "Buy" and "Sell" -->
                 <input class="form-check-input" type="radio" asp-for="@Model.Transactions.Action" value="Buy" id="flexRadioDefault1">
                 <label class="form-check-label" for="flexRadioDefault1">
                     Buy
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" asp-for="@Model.Transactions.Action" value="Sell" id="flexRadioDefault2" checked>
+                <input class="form-check-input" type="radio" asp-for="@Model.Transactions.Action" value="Sell" id="flexRadioDefault2">
                 <label class="form-check-label" for="flexRadioDefault2">
                     Sell
                 </label>
@@ -35,5 +35,35 @@
             <!-- Button to submit the form -->
             <button type="submit">Submit</button>
         </form>
+
+        <div class="scrollable-table mt-3" style="max-height: 50vh">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>Name</th>
+                        <th>Shares</th>
+                        <th>Cost</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+@*                     @if (Model != null && Model.TransactionsList != null)
+                    {
+                        @foreach (var element in Model.TransactionsList)
+                        {
+                            <tr>
+                                <td>@element.Time</td>
+                                <td>@element.Symbol</td>
+                                <td>@element.Action</td>
+                                <td>@element.Quantity</td>
+                                <td>@(element.Action == "Sell" ? "-" : "")@element.Cost</td>
+                                <td>@element.CurrentPrice</td>
+                            </tr>
+                        }
+                    } *@
+                <tbody>
+            </table>
+        </div>
     </div>
 </div>

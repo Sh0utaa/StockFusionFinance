@@ -25,10 +25,10 @@
                         {
                             <tr>
                                 <td>@element.Time</td>
-                                <td>@element.Symbol</td> <!-- Fixed the closing </td> tag -->
-                                <td>@element.Action</td> <!-- Fixed the closing </td> tag -->
-                                <td>@element.Quantity</td>
-                                <td>@element.Cost</td>
+                                <td>@element.Symbol</td>
+                                <td>@element.Action</td>
+                                <td>@(element.Action == "Sell" ? "-" : "")@element.Quantity</td>
+                                <td>@(element.Action == "Sell" ? "-" : "")@element.Cost$</td>
                                 <td>@element.CurrentPrice</td>
                             </tr>
                         }

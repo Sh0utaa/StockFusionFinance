@@ -21,5 +21,6 @@ public class AuthSystemDBContext : IdentityDbContext<ApplicationUser>
         // For example, you can rename the ASP.NET Identity table names and more.
         // Add your customizations after calling base.OnModelCreating(builder);
         builder.Entity<TransactionsModel>().ToTable("Transactions");
+        builder.Entity<PortfolioModel>().ToTable("Portfolio");
     }
 }

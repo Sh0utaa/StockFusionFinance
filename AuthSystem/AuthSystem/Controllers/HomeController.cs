@@ -39,9 +39,6 @@ namespace AuthSystem.Controllers
             if (!string.IsNullOrWhiteSpace(model.Transactions.Symbol))
             {
                 var user = await _userManager.GetUserAsync(User);
-
-                IndexViewModel newModel = new IndexViewModel();
-
                 var stockInfo = await _yahooApi.GetStockInfo(model.Transactions.Symbol);
 
                 TransactionsModel transactions = new TransactionsModel()
@@ -51,17 +48,20 @@ namespace AuthSystem.Controllers
                     CurrentPrice = (double)stockInfo.Data.CurrentPrice,
                     Time = DateTime.Now,
                     Quantity = model.Transactions.Quantity,
-                    Cost = (double)(stockInfo.Data.CurrentPrice * model.Transactions.Quantity),
+                    Cost = Math.Round((double)(stockInfo.Data.CurrentPrice * model.Transactions.Quantity), 3),
                     Action = model.Transactions.Action,
                 };
 
                 _context.Transactions.Add(transactions);
                 await _context.SaveChangesAsync();
+
+
+
             }
             return View();
         }
 
-            public async Task<IActionResult> History()
+        public async Task<IActionResult> History()
         {
             var user = await _userManager.GetUserAsync(User);
 

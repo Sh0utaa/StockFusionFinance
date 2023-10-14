@@ -1,4 +1,4 @@
-﻿@model AuthSystem.Models.IndexViewModel
+﻿@model AuthSystem.Models.StockFusionFinanceModel
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -36,6 +36,8 @@
             <button type="submit">Submit</button>
         </form>
 
+        <h1>Portfolio</h1>
+
         <div class="scrollable-table mt-3" style="max-height: 50vh">
             <table class="table table-striped">
                 <thead>
@@ -48,20 +50,18 @@
                 </thead>
 
                 <tbody>
-@*                     @if (Model != null && Model.TransactionsList != null)
+                    @if (Model != null && Model.PortfolioList != null)
                     {
-                        @foreach (var element in Model.TransactionsList)
+                        @foreach (var element in Model.PortfolioList)
                         {
                             <tr>
-                                <td>@element.Time</td>
                                 <td>@element.Symbol</td>
-                                <td>@element.Action</td>
-                                <td>@element.Quantity</td>
-                                <td>@(element.Action == "Sell" ? "-" : "")@element.Cost</td>
-                                <td>@element.CurrentPrice</td>
+                                <td>@element.Name</td>
+                                <td>@element.Shares</td>
+                                <td>@element.Cost</td>
                             </tr>
                         }
-                    } *@
+                    }
                 <tbody>
             </table>
         </div>

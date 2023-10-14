@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuthSystem.Migrations
 {
     [DbContext(typeof(AuthSystemDBContext))]
-    [Migration("20231013113045_PortfolioTable")]
+    [Migration("20231013120003_PortfolioTable")]
     partial class PortfolioTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

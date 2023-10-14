@@ -13,6 +13,7 @@ public class AuthSystemDBContext : IdentityDbContext<ApplicationUser>
     {
     }
     public DbSet<TransactionsModel> Transactions { get; set; }
+    public DbSet<PortfolioModel> Portfolio { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

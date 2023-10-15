@@ -8,6 +8,7 @@ namespace AuthSystem.Models
         public List<TransactionsModel>? TransactionsList { get; set; }
         public PortfolioModel Portfolio { get; set; }
         public List<PortfolioModel> PortfolioList { get; set; }
+        public Dictionary<string, object> Dictionary { get; set; }
         public YahooApiModel.Root? StockData { get; set; }
     }
 }

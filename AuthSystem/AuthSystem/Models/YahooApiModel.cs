@@ -86,9 +86,6 @@ namespace StockFusion_Finance.Models
             [JsonProperty("city")]
             public string City { get; set; }
 
-            [JsonProperty("companyOfficers")]
-            public List<CompanyOfficer> CompanyOfficers { get; set; }
-
             [JsonProperty("compensationAsOfEpochDate")]
             public int? CompensationAsOfEpochDate { get; set; }
 

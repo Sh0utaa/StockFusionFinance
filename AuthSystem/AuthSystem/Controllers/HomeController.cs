@@ -27,13 +27,32 @@ namespace AuthSystem.Controllers
             _context = context;
             _userManager = userManager;
         }
+        public static Dictionary<string, object> ConvertModelToDictionary(object model)
+        {
+            var dict = new Dictionary<string, object>();
+
+            foreach (var prop in model.GetType().GetProperties())
+            {
+                dict[prop.Name] = prop.GetValue(model);
+            }
+
+            return dict;
+        }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string symbol)
         {
             var user = await _userManager.GetUserAsync(User);
 
             StockFusionFinanceModel portfolioModel = new StockFusionFinanceModel();
+
+            if(!string.IsNullOrWhiteSpace(symbol))
+            {
+                var model = await _yahooApi.GetStockInfo(symbol);
+
+                Dictionary<string, object> modelDict = ConvertModelToDictionary(model.Data);
+                portfolioModel.Dictionary = modelDict;
+            }
 
             portfolioModel.PortfolioList = await _context.Portfolio
                 .Where(t => t.Id == user.Id)
